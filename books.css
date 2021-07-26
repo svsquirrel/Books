@@ -3,16 +3,50 @@
 body {
     font-size: 14;
     font-family: 'Noto Sans', sans-serif;
-    width: 100%;
-    height: 100vh;
 }
-
-* {
-    box-sizing: border-box;
+header {
+    height: 100px;
+    padding:6px 20px  0  20px;
+    display:grid;
+    grid-template-rows: 1;
+    grid-template-columns: 1fr 1fr 1fr;
   }
-  .openBtn {
-    display: flex;
-    justify-content: center;
+
+  #alert {
+      padding-top: 33px;
+      text-align: center;
+      color: #1c87c9;
+      font-weight: bold;
+      
+  }
+ .openBtn {
+    display: grid;
+    grid-column: 3;
+    padding: 15px 20px 0 20px;
+  }
+
+ .wrapper {
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr 1fr;
+    grid-auto-rows:minmax(100px, auto);
+    grid-gap:1em;
+    justify-items:stretch;
+    align-items:stretch;
+  }
+
+  .wrapper > div{
+    background:#eee;
+    padding:1em;
+  }
+  .box1 {
+      border: 2px solid black;
+      height: 60px;
+  }
+  
+  }
+
+  * {
+    box-sizing: border-box;
   }
   .openButton {
     border: none;
@@ -42,16 +76,14 @@ body {
     padding: 20px;
     background-color: #fff;
   }
-  .formContainer input[type=text],
-  .formContainer input[type=password] {
-    width: 100%;
+  .formContainer input[type=text]{
+    width: 90%;
     padding: 15px;
     margin: 5px 0 20px 0;
     border: none;
     background: #eee;
   }
-  .formContainer input[type=text]:focus,
-  .formContainer input[type=password]:focus {
+  .formContainer input[type=text]:focus {
     background-color: #ddd;
     outline: none;
   }
