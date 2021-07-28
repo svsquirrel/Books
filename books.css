@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
 
+
 body {
     font-size: 14;
     font-family: 'Noto Sans', sans-serif;
@@ -27,24 +28,75 @@ header {
 
  .wrapper {
     display:grid;
-    grid-template-columns:1fr 1fr 1fr 1fr;
-    grid-auto-rows:minmax(100px, auto);
+    grid-template-columns:1fr 3fr;
+    grid-template-rows: 2;
     grid-gap:1em;
     justify-items:stretch;
     align-items:stretch;
   }
 
   .wrapper > div{
-    background:#eee;
+    
     padding:1em;
   }
   .box1 {
-      border: 2px solid black;
-      height: 60px;
+    border: 4px solid #cc0000;
+    height: 60px;
+    background-color: white;
+    
   }
-  
+  .box2 {
+    border: 4px solid #8ebf42;
+    height: 60px;
+    background-color: white;
+  }
+  .gridcontainer {
+    background-color:white;
+    border: #8ebf42  6px solid;
+    grid-column: 2 ;
+    grid-row: 2 / 4;
+  }
+  #grid {
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1em;
+    grid-auto-rows: 175px;
+   
+ }
+  #grid > div{
+      border: #333 1px solid;
+      padding: 1em;
+      background-color: white;
+     
+  }
+  #grid >div >button{
+    padding: 12px 20px;
+    border:none;
+    border-radius: 5px;
+    background-color: #8ebf42;
+    color: #fff;
+    cursor: pointer;
+    width: 50%;
+    opacity: 0.8;
+
+  }
+  #grid >div >button:hover{
+      opacity: 1;
   }
 
+  .box3 {
+    display: grid;
+    border: #cc0000 6px solid;
+    grid-auto-rows: 175px;
+    grid-gap: 1em;
+  }
+
+  .box3  >div {
+      background-color:white;
+      border: black 1px solid;
+      padding:1em;
+  }
+/* Form styling */  
   * {
     box-sizing: border-box;
   }
