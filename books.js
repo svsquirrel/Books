@@ -1,6 +1,4 @@
 
-
-
 let myLibrary = [];
 var cardtitle = document.createElement('div');
 var cardauthor = document.createElement('div');
@@ -32,13 +30,12 @@ function setLibrary() {
 }
 
 function getLibrary() {
-  if (!localStorage.myLibrary){
-      makeDisplayGrid();
-  }else{
-  
-  let tempLibrary  = localStorage.getItem('myLibrary')
-       tempLibrary  = JSON.parse(tempLibrary);
-       myLibrary    = tempLibrary;
+    if  (!localStorage.myLibrary){
+        makeDisplayGrid();
+    }else{
+        let tempLibrary  = localStorage.getItem('myLibrary')
+        tempLibrary      = JSON.parse(tempLibrary);
+        myLibrary        = tempLibrary;
    }
 }
 
@@ -48,8 +45,8 @@ const enters = document.getElementById('enter');
 })  
 
 function getBookFromForm() {
-    event.preventDefault();
-    form.style.display = 'none';
+//event.preventDefault();
+ //   form.style.display = 'none';
     
     let title =  document.getElementById('title').value;
     let author=  document.getElementById('author').value;
@@ -57,12 +54,19 @@ function getBookFromForm() {
     let read =   document.getElementById('read').checked;
     let book =   new Books(title, author, genre, read);
     myLibrary.push(book);
+    clearForm();
     setLibrary();
     getLibrary();
     makeDisplayGrid();
-    form.reset();
-   
+     
  };  
+
+ function clearForm(){
+    document.getElementById('title').value  = '';
+    document.getElementById('author').value = '';
+    document.getElementById('genre').value  = '';
+    document.getElementById('read').checked = false;
+ }
  
  function getFixedLibrary (){
 
@@ -75,9 +79,9 @@ function getBookFromForm() {
 }
 
 function makeDisplayGrid() {
-        const display = document.getElementById('grid');
-        const books = document.querySelectorAll('.book');
-        books.forEach(book => display.removeChild(book));
+    const display = document.getElementById('grid');
+    const books = document.querySelectorAll('.book');
+    books.forEach(book => display.removeChild(book));
    
         for (i = 0; i<myLibrary.length; i++) {
             setLibraryData(myLibrary[i]);
@@ -85,14 +89,13 @@ function makeDisplayGrid() {
     };
 
 function setLibraryData(item) {
-    
             let library  = document.getElementById('grid');
             let bookdiv   = document.createElement('div');
 
+            var cardread =   document.createElement('div');
             var cardtitle =  document.createElement('div');
             var cardauthor = document.createElement('div');
             var cardgenre =  document.createElement('div');
-            var cardread =   document.createElement('div');
             var delbutton =  document.createElement('button');
             
             title =  item.title;
@@ -103,20 +106,34 @@ function setLibraryData(item) {
             cardtitle.textContent =  title;
             cardauthor.textContent = 'by  ' + author;
             cardgenre.textContent =  genre;
-            cardread.textContent =   read;
-
-            bookdiv.classList = 'book'
-            bookdiv.id         =myLibrary.indexOf(item);
-
-            delbutton.className = 'bookbutton';
+            
+           
+            delbutton.classList='deletebookbutton';
             delbutton.innerHTML = 'delete';
-                        
+            
+            cardtitle.classList = 'title';
+            cardauthor.classList= 'author';
+            cardgenre.classList = 'genre';
+            cardread.classList = 'pressifreadbutton';
+
+            bookdiv.classList = 'book';
+
+            bookdiv.id        =  myLibrary.indexOf(item);
+                      
             bookdiv.appendChild(cardtitle);
             bookdiv.appendChild(cardauthor);
             bookdiv.appendChild(cardgenre);
-            bookdiv.appendChild(cardread);
             bookdiv.appendChild(delbutton);
-
+            bookdiv.appendChild(cardread); 
+            if (item.read ===true){
+                cardread.classList.remove('pressifreadbutton');
+                cardread.classList.add('readitsticker');
+                p = document.createElement('p');
+                p.textContent = 'Read!';
+                p.classList = 'inside';
+                cardread.appendChild(p);
+            }
+           
             library.appendChild(bookdiv);
 
             delbutton.addEventListener('click', () => {
@@ -126,13 +143,9 @@ function setLibraryData(item) {
                 getLibrary();
                 makeDisplayGrid();
             })
-       
-  
-   };
+     };
    
-function readStatus() {
-  
-}
+
 
 function openForm() {
     form.style.display = 'block';
@@ -144,12 +157,14 @@ function closeForm() {
  /*
  
 Also: need to
-    1. add read button to card
-    2. add delete button to card
+    
     3 if possible, make sure that new book isn't a duplicate of existing book
  https://www.youtube.com/watch?v=k8yJCeuP6I8 (local storage)
  https://www.youtube.com/watch?v=rVyTjFofok0 (local storage)
 https://www.youtube.com/watch?v=jV8B24rSN5o (CSS GRID)
  //https://stackoverflow.com/questions/63310980/how-to-display-my-array-of-objects-into-my-html-pages-table-individually-by
 
+
  
+
+ */
