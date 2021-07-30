@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="books.css">
+    
     <title>Books</title>
 </head>
 <body>
@@ -12,28 +13,26 @@
     <h2 class = 'words'>My Library</h2>
     <div id = 'alert'></div>
     <div class="openBtn">
-      <button class="openButton" onclick="openForm()"><strong>Add Book</strong></button>
+      <button class="openButton"><strong>Add Book</strong></button>
     </div>
     </header>
     <div class = 'wrapper'>
         <div class="box suggested">Suggested For You</div>
         <div  class="box yourbooks">Your Books</div>
         <div class = 'box goodbooks'>
-             <div id = 'sugfirst' class="box box5"> </div>
-             <div id = 'sugsecond' class="box box9" >
-                
+            <div id = 'sugfirst' class="book">
+                <p class =' genre'>Mystery</p>
+                <p class = 'title'>Murder on the Orient Express</p>
+                <p class = 'author'> by  Agatha Christie</p>
+            </div>
+            <div id = 'sugsecond' class="book" >
+                <p class = 'genre'>Technical</p>
+                <p class = 'title'>Clean Code</p>
+                <p class = 'author'>Robert Martin </p>   
              </div>
         </div>
         <div id = 'grid' class=' gridcontainer'></div>
-        <div class = 'trial'>
-            <div class = 'box g'>genre</div>
-            <div class = 'box r'>read</div>
-            <div class = 'box t'>title</div>
-            <div class = 'box a'>quthor</div>
-            <div class = 'box d'>delete</div>
-        </div>
-
-     </div> 
+    </div> 
       
     <div class = 'enterBookPopup'>
         <div class = 'formPopup' id = 'popupForm'>
@@ -46,13 +45,13 @@
                 <input type = 'text' id = 'genre' placeholder='Genre' name = 'genre'>
                 <label for = 'read'>? Read</label>
                 <input type = 'checkbox' id = 'read' name = 'read'>
-                <button type='submit' id = 'enter'class = 'btn'>Submit</button>
-                <button type='button'class = 'btn cancel'onclick = 'closeForm()'>Close</button> 
+                <button type='submit' id ='submit' class = 'btn'>Submit</button>
+                <button type='button'class = 'btn cancel'>Close</button> 
             </form>
         </div>
     </div>
     
    
-    <script src = 'books.js'></script>
+  <script src = 'books.js'></script>  
 </body>
 </html>
